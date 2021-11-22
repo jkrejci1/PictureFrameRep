@@ -35,4 +35,19 @@ public class PictureData {
 		this.description = description;
 	}
 	
+	//Non-default constructor 
+	public PictureData() {
+		fileName = "";
+		date = "";
+		description = "";
+	}
+	
+	//Default constructor
+	public PictureData(String fileName, String data, String description) {
+		setFileName(fileName);
+		setDate(data);
+		setDescription(description);
+	}
+	//To String function
+	
 }
