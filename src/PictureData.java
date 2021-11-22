@@ -8,10 +8,7 @@ public class PictureData {
 	private String fileName;
 	private String date;
 	private String description;
-	public String getFileName() {
-		return fileName;
-	}
-	
+
 	//Getters and Setters
 	
 	//Getter/Setter for fileName
