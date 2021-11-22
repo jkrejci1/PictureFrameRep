@@ -5,18 +5,18 @@
  *
  */
 public class PictureData {
-	private String fileName;
+	private String picFile;
 	private String date;
 	private String description;
 
 	//Getters and Setters
 	
 	//Getter/Setter for fileName
-	public String getFileName() {
-		return fileName;
+	public String getPicFile() {
+		return picFile;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setPicFile(String fileName) {
+		this.picFile = fileName;
 	}
 	
 	//Getter/Setter for date
@@ -37,14 +37,14 @@ public class PictureData {
 	
 	//Non-default constructor 
 	public PictureData() {
-		fileName = "";
+		picFile = "";
 		date = "";
 		description = "";
 	}
 	
 	//Default constructor
-	public PictureData(String fileName, String date, String description) {
-		setFileName(fileName);
+	public PictureData(String picFile, String date, String description) {
+		setPicFile(picFile);
 		setDate(date);
 		setDescription(description);
 	}
@@ -52,6 +52,6 @@ public class PictureData {
 	//To String function
 	@Override
 	public String toString() {
-		return String.format("%s %s %s", fileName, date, description);
+		return String.format("%s %s %s", picFile, date, description);
 	}
 }
