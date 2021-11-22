@@ -43,11 +43,15 @@ public class PictureData {
 	}
 	
 	//Default constructor
-	public PictureData(String fileName, String data, String description) {
+	public PictureData(String fileName, String date, String description) {
 		setFileName(fileName);
-		setDate(data);
+		setDate(date);
 		setDescription(description);
 	}
-	//To String function
 	
+	//To String function
+	@Override
+	public String toString() {
+		return String.format("%s %s %s", fileName, date, description);
+	}
 }
