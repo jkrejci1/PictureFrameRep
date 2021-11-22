@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Main Class - Used for the creation of everything, also used for the reading of the file for PictureData
@@ -10,7 +11,7 @@ public class App {
 		String fname = "descriptions.txt";
 		
 		//Used to read the text file being used to the program for our creation
-		PictureDataReader.readPictureDataFromFile(fname);
+		ArrayList<PictureData> imgData = PictureDataReader.readPictureDataFromFile(fname);
 		
 		//Used to create the frame of the app
 		PictureFrame pf = new PictureFrame();
