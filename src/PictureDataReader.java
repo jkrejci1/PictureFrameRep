@@ -12,7 +12,13 @@ public class PictureDataReader {
 		try {
 			ArrayList<PictureData> picData = new ArrayList<PictureData>();
 			//Needed for picking apart the data
-			String line, 
+			String line, picFile = null, date = null, description = null; 
+			
+			//Return the array list of picture data when complete
+			return picData;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
 		}
 	}
 }
