@@ -1,5 +1,6 @@
 //Imports
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -80,9 +81,37 @@ public class PictureFrame extends JFrame {
 		//For the save button
 		southButtons.add(btnSave);
 		//For the Next button
+		
 		southButtons.add(btnNext);
-
+		
+		//Now we need to create the action events for when the button is clicked, using the counter to keep tracking of nexts (addition) previous (subtraction) and saves
+		//Use functions for next, previous, and save (For save we need to change data in text file when changed, use the PictureDataWriter class)
+		
+		//Action event for clicking the next button
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Add what happens when you press the next button here
+				JOptionPane.showMessageDialog(null,"You pressed next!");
+			}
+		});
+		
+		//Action event for clicking the previous button
+		btnPrev.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Add what happens when you press the next button here
+				JOptionPane.showMessageDialog(null,"You pressed previous!");
+			}
+		});
+		
+		//Action event for clicking save
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Add what happens when you press the next button here
+				JOptionPane.showMessageDialog(null,"You pressed save!");
+			}
+		});
 	}
+
 	
 	/**
 	 * Private border layout object to be used
