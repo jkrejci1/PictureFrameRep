@@ -1,10 +1,13 @@
 //Imports
-import java.awt.BorderLayout;
-
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.image.BufferedImage; //Buffered prevents flicker. It's stored in memory
+import javax.imageio.ImageIO;
+import java.io.File; //For the picture
+import javax.swing.JOptionPane;
 
 //CAN USE CTRL-->SHIFT-->O to automatically put missing inputs
 import javax.swing.JButton;
