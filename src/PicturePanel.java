@@ -34,9 +34,7 @@ public class PicturePanel extends JPanel{
 			BufferedImage img = picture;
 			g.drawImage(img,0,0,null);
 		} catch (Exception ex) {
-			ex.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Failed to load image");
+			JOptionPane.showMessageDialog(null, "Failed to load picture");
 		}
 	}
-
 }
