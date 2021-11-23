@@ -11,6 +11,11 @@ import java.io.IOException;
  */
 public class PictureLoader {
 	
+	/**
+	 * Function that loads the images onto the buffered image array list.
+	 * @param imgData - The array list of picture data which will be needed to add images to the buffered image array list.
+	 * @return
+	 */
 	public static ArrayList<BufferedImage> loadImagesFromPictureData(ArrayList<PictureData> imgData) {
 		BufferedImage imageFile = null;
 		String imageFromFile;
@@ -24,7 +29,6 @@ public class PictureLoader {
 			try {
 				imageFile = ImageIO.read(new File(imageFromFile));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			images.add(imageFile);
