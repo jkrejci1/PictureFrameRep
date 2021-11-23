@@ -94,6 +94,7 @@ public class PictureFrame extends JFrame {
 				panPic.remove(panPic);
 				//The north will be used for the picture so it's dimensions match the size of the picture
 				panPic.setPicture(theImages.get(1));
+				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
 				
 			}
 		});
