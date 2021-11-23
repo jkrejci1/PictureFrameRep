@@ -22,6 +22,12 @@ import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
 	
+	
+	/**
+	 * This is the function that will set up the graphical user interface
+	 * @param theImages - The buffered image array list of all the images to be used.
+	 * @param imgData - The array list that contains all the data (file names, dates, descriptions) of each image 
+	 */
 	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
 
 		setTitle("Picture Frame"); //Appears at the top bar
