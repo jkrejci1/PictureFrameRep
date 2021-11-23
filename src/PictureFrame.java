@@ -22,17 +22,8 @@ import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
 	
-	public void setupGUI() {
-		//Declare and initialize the variable for the text file
-		String fname = "descriptions.txt";
-		
-		//Used to read the text file being used to the program for our creation
-		ArrayList<PictureData> imgData = PictureDataReader.readPictureDataFromFile(fname);
-		
-		//Call the PictureLoader class to create list of the buffered images
-		ArrayList<BufferedImage> theImages = PictureLoader.loadImagesFromPictureData(imgData);
-		
-		
+	public void setupGUI(ArrayList<BufferedImage> theImages) {
+
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
@@ -41,6 +32,7 @@ public class PictureFrame extends JFrame {
 		
 		//Have drawing Picture Panel do its work
 		PicturePanel panPic = new PicturePanel();
+		//This will be for the start of what images are shown, it automatically loads the first one
 		panPic.setPicture(theImages.get(0));
 		c.add(panPic,BorderLayout.CENTER);
 		
@@ -51,6 +43,9 @@ public class PictureFrame extends JFrame {
 	 * Used for setting up graphical user interface
 	 */
 	public PictureFrame() {
-		setupGUI();
+		setupGUI(null);
+	}
+	public PictureFrame(ArrayList<BufferedImage> theImages) {
+		setupGUI(theImages);
 	}
 }

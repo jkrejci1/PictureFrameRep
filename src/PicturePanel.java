@@ -32,7 +32,7 @@ public class PicturePanel extends JPanel{
 		//Loads an image to the screen
 		try {
 			BufferedImage img = picture;
-			g.drawImage(img,100,50,300,400,null);
+			g.drawImage(img,0,0,null);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Failed to load image");
