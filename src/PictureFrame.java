@@ -38,6 +38,9 @@ public class PictureFrame extends JFrame {
 		panPic.setPicture(theImages.get(0));
 		//c.add(panPic.CENTER,BorderLayout.NORTH); //Question for adding a boarder layout to center		
 		
+		//Now create the center frame which contains a boarder layout as well
+		JPanel panCenter = new JPanel();
+		panCenter.setLayout(new BorderLayout());
 	}
 	
 	private Object BorderLayout() {
