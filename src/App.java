@@ -15,8 +15,9 @@ public class App {
 		
 		//Used to create the frame of the app
 		PictureFrame pf = new PictureFrame();
+		pf.setVisible(true);
 		
 		//Keep check if the imgData array has processed correctly or not
-		System.out.println(imgData);
+		//System.out.println(imgData);
 	}
 }
