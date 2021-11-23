@@ -91,7 +91,16 @@ public class PictureFrame extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Add what happens when you press the next button here
-				JOptionPane.showMessageDialog(null,"You pressed next!");
+				//Need to go to the next picture, and if we're on the last picture go to the first picture
+				//Have drawing Picture Panel do its work
+				Container c = getContentPane();
+				c.setLayout(new BorderLayout()); //Set to a border layout
+				PicturePanel panPic = new PicturePanel();
+				//This will be for the start of what images are shown, it automatically loads the first one
+				//Original picture
+				c.add(panPic,"North");
+				//The north will be used for the picture so it's dimmensions match the size of the picture
+				panPic.setPicture(theImages.get(1));
 			}
 		});
 		
