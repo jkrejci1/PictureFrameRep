@@ -33,6 +33,7 @@ public class PictureFrame extends JFrame {
 		//Have drawing Picture Panel do its work
 		PicturePanel panPic = new PicturePanel();
 		//This will be for the start of what images are shown, it automatically loads the first one
+		//Original picture
 		c.add(panPic,"North");
 		//The north will be used for the picture so it's dimmensions match the size of the picture
 		panPic.setPicture(theImages.get(0));
@@ -41,10 +42,16 @@ public class PictureFrame extends JFrame {
 		//Now create the center frame which contains a boarder layout as well
 		JPanel panCenter = new JPanel();
 		panCenter.setLayout(new BorderLayout());
+		//Add it to the content pane
 		c.add(panCenter);
+		//Make and insert the text field for the original picture date
 		JTextField dateText = new JTextField(imgData.get(0).getDate());
 		panCenter.add(dateText, "North");
+		//Make and insert the text area for the description of the picture
+		JTextArea descriptionText = new JTextArea(imgData.get(0).getDescription());
+		panCenter.add(descriptionText, "Center");
 		
+		//Create the three buttons which will be used to save the data, click next, or click previous
 		
 	}
 	
