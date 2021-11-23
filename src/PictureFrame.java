@@ -41,6 +41,11 @@ public class PictureFrame extends JFrame {
 		//Now create the center frame which contains a boarder layout as well
 		JPanel panCenter = new JPanel();
 		panCenter.setLayout(new BorderLayout());
+		c.add(panCenter);
+		JTextField dateText = new JTextField(imgData.get(0).getDate());
+		panCenter.add(dateText, "North");
+		
+		
 	}
 	
 	/**
