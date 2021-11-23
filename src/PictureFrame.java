@@ -58,7 +58,30 @@ public class PictureFrame extends JFrame {
 		panCenter.add(descriptionText, "Center");
 		
 		//Create the three buttons which will be used to save the data, click next, or click previous
+		//Create JPanel for the south that will contain the three buttons
+		JPanel southButtons = new JPanel();
+		//May have to use a boarder layout for the southButtons panel where we use west, center, east for the buttons
+		southButtons.setLayout(new FlowLayout());
+		//Add it to the content pane
+		c.add(southButtons);
+		//Create the three buttons to be used
+		//Previous button
+		JButton btnPrev = new JButton("Previous");
 		
+		//Save button
+		JButton btnSave = new JButton("Save");
+		
+		//Next button
+		JButton btnNext = new JButton("Next");
+		
+		//Now insert the buttons into the correct locations of the frame
+		//For the previous button
+		southButtons.add(btnPrev);
+		//For the save button
+		southButtons.add(btnSave);
+		//For the Next button
+		southButtons.add(btnNext);
+
 	}
 	
 	/**
