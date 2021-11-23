@@ -33,12 +33,19 @@ public class PictureFrame extends JFrame {
 		//Have drawing Picture Panel do its work
 		PicturePanel panPic = new PicturePanel();
 		//This will be for the start of what images are shown, it automatically loads the first one
+		c.add(panPic,"North");
+		//The north will be used for the picture so it's dimmensions match the size of the picture
+		panPic.setPreferredSize(new Dimension(290,192));
 		panPic.setPicture(theImages.get(0));
-		c.add(panPic,BorderLayout.CENTER);
-		
+		//c.add(panPic.CENTER,BorderLayout.NORTH); //Question for adding a boarder layout to center		
 		
 	}
 	
+	private Object BorderLayout() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * Used for setting up graphical user interface
 	 */
