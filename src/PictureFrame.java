@@ -23,6 +23,15 @@ import javax.swing.JTextField;
 public class PictureFrame extends JFrame {
 	
 	public void setupGUI() {
+		//Declare and initialize the variable for the text file
+		String fname = "descriptions.txt";
+		
+		//Used to read the text file being used to the program for our creation
+		ArrayList<PictureData> imgData = PictureDataReader.readPictureDataFromFile(fname);
+		
+		//Call the PictureLoader class to create list of the buffered images
+		ArrayList<BufferedImage> theImages = PictureLoader.loadImagesFromPictureData(imgData);
+		
 		
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
@@ -32,7 +41,7 @@ public class PictureFrame extends JFrame {
 		
 		//Have drawing Picture Panel do its work
 		PicturePanel panPic = new PicturePanel();
-		panPic.setBackground(Color.WHITE);
+		panPic.setPicture(theImages.get(0));
 		c.add(panPic,BorderLayout.CENTER);
 		
 		
