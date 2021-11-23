@@ -3,6 +3,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.image.BufferedImage; //Buffered prevents flicker. It's stored in memory
 import javax.imageio.ImageIO;
@@ -23,6 +24,11 @@ public class PicturePanel extends JPanel{
 	//Set picture function
 	public void setPicture(BufferedImage picture) {
 		this.picture = picture;
+	}
+	
+	//Constructor for panel which makes the full size of the image cover the North part of the panel
+	public PicturePanel() {
+		setPreferredSize(new Dimension(290,192));
 	}
 	
 	@Override
