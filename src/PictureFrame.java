@@ -43,6 +43,10 @@ public class PictureFrame extends JFrame {
 		panCenter.setLayout(new BorderLayout());
 	}
 	
+	/**
+	 * Private border layout object to be used
+	 * @return null
+	 */
 	private Object BorderLayout() {
 		// TODO Auto-generated method stub
 		return null;
@@ -54,6 +58,11 @@ public class PictureFrame extends JFrame {
 	public PictureFrame() {
 		setupGUI(null);
 	}
+	
+	/**
+	 * Sets up GUI using our information we need
+	 * @param theImages
+	 */
 	public PictureFrame(ArrayList<BufferedImage> theImages) {
 		setupGUI(theImages);
 	}
