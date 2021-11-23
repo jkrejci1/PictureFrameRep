@@ -21,6 +21,6 @@ public class App {
 		pf.setVisible(true);
 		
 		//Keep check if the imgData array has processed correctly or not
-		System.out.println(theImages);
+		//System.out.println(theImages);
 	}
 }

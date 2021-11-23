@@ -18,5 +18,24 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PicturePanel extends JPanel{
+	private BufferedImage picture;
 	
+	//Set picture function
+	public void setPicture(BufferedImage picture) {
+		this.picture = picture;
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		//Loads an image to the screen
+		try {
+			BufferedImage img = picture;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Failed to load image");
+		}
+	}
+
 }
