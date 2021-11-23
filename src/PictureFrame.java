@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
 	
-	public void setupGUI(ArrayList<BufferedImage> theImages) {
+	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
 
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
@@ -56,14 +56,14 @@ public class PictureFrame extends JFrame {
 	 * Used for setting up graphical user interface
 	 */
 	public PictureFrame() {
-		setupGUI(null);
+		setupGUI(null,null);
 	}
 	
 	/**
 	 * Sets up GUI using our information we need
 	 * @param theImages
 	 */
-	public PictureFrame(ArrayList<BufferedImage> theImages) {
-		setupGUI(theImages);
+	public PictureFrame(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
+		setupGUI(theImages, imgData);
 	}
 }

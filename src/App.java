@@ -17,7 +17,7 @@ public class App {
 		//Call the PictureLoader class to create list of the buffered images
 		ArrayList<BufferedImage> theImages = PictureLoader.loadImagesFromPictureData(imgData);
 		//Used to create the frame of the app
-		PictureFrame pf = new PictureFrame(theImages);
+		PictureFrame pf = new PictureFrame(theImages, imgData);
 		pf.setVisible(true);
 		
 		//Keep check if the imgData array has processed correctly or not
