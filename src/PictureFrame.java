@@ -65,13 +65,12 @@ public class PictureFrame extends JFrame {
 		southButtons.setLayout(new FlowLayout());
 		//Add it to the content pane
 		panCenter.add(southButtons, "South");
+		
 		//Create the three buttons to be used
 		//Previous button
 		JButton btnPrev = new JButton("Previous");
-		
 		//Save button
 		JButton btnSave = new JButton("Save");
-		
 		//Next button
 		JButton btnNext = new JButton("Next");
 		
@@ -81,7 +80,6 @@ public class PictureFrame extends JFrame {
 		//For the save button
 		southButtons.add(btnSave);
 		//For the Next button
-		
 		southButtons.add(btnNext);
 		
 		//Now we need to create the action events for when the button is clicked, using the counter to keep tracking of nexts (addition) previous (subtraction) and saves
