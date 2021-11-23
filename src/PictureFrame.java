@@ -49,7 +49,7 @@ public class PictureFrame extends JFrame {
 		JPanel panCenter = new JPanel();
 		panCenter.setLayout(new BorderLayout());
 		//Add it to the content pane
-		c.add(panCenter);
+		c.add(panCenter, "Center");
 		//Make and insert the text field for the original picture date
 		JTextField dateText = new JTextField(imgData.get(0).getDate());
 		panCenter.add(dateText, "North");
@@ -63,7 +63,7 @@ public class PictureFrame extends JFrame {
 		//May have to use a boarder layout for the southButtons panel where we use west, center, east for the buttons
 		southButtons.setLayout(new FlowLayout());
 		//Add it to the content pane
-		c.add(southButtons);
+		panCenter.add(southButtons, "South");
 		//Create the three buttons to be used
 		//Previous button
 		JButton btnPrev = new JButton("Previous");
