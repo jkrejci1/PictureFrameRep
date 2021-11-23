@@ -88,6 +88,7 @@ public class PictureFrame extends JFrame {
 		//Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//FOR OTHER PICTURES TRY TO MAKE SOME COUNTER SYSTEM TO SELECT THE OTHER IMAGES
 				//Remove the old picture
 				panPic.remove(panPic);
 				//The north will be used for the picture so it's dimensions match the size of the picture
