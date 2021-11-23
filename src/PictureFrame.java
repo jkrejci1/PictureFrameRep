@@ -22,8 +22,12 @@ import javax.swing.JTextField;
 public class PictureFrame extends JFrame {
 	
 	public void setupGUI() {
-		setTitle("Picture Frame");
+		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
+		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
+		Container c = getContentPane();
+		c.setLayout(new BorderLayout()); //Set to a border layout
+		
 		
 	}
 	
