@@ -218,28 +218,52 @@ public class PictureFrame extends JFrame {
 					//Below will successfully switch dateText and descriptionText for the picture
 					dateText.setText(dateText.getText());
 					descriptionText.setText(descriptionText.getText());
+					//Need to reset the date and description for the imgData array with what we changed it to
+					imgData.get(0).setDate(dateText.getText());
+					imgData.get(0).setDescription(descriptionText.getText());
 					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
-					int n = 1;
+					int n = 0;
 					//Now we need to send this data to the writer to change them in the text file permanently 
-					PictureDataWriter.changeTextData(dateText, descriptionText, n);
+					PictureDataWriter.changeTextData(imgData, n);
 				
 				} else if (panPic.getPicture().equals(theImages.get(1))) {
 					//Need to change the dateText and descriptionText to what is now there
 					//Below will successfully switch dateText and descriptionText for the picture
 					dateText.setText(dateText.getText());
 					descriptionText.setText(descriptionText.getText());
+					//Need to reset the date and description for the imgData array with what we changed it to
+					imgData.get(1).setDate(dateText.getText());
+					imgData.get(1).setDescription(descriptionText.getText());
+					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
+					int n = 1;
+					//Now we need to send this data to the writer to change them in the text file permanently 
+					PictureDataWriter.changeTextData(imgData, n);
 					
 				} else if (panPic.getPicture().equals(theImages.get(2))) {
 					//Need to change the dateText and descriptionText to what is now there
 					//Below will successfully switch dateText and descriptionText for the picture
 					dateText.setText(dateText.getText());
 					descriptionText.setText(descriptionText.getText());
+					//Need to reset the date and description for the imgData array with what we changed it to
+					imgData.get(2).setDate(dateText.getText());
+					imgData.get(2).setDescription(descriptionText.getText());
+					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
+					int n = 2;
+					//Now we need to send this data to the writer to change them in the text file permanently 
+					PictureDataWriter.changeTextData(imgData, n);
 					
 				} else if (panPic.getPicture().equals(theImages.get(3))) {
 					//Need to change the dateText and descriptionText to what is now there
 					//Below will successfully switch dateText and descriptionText for the picture
 					dateText.setText(dateText.getText());
 					descriptionText.setText(descriptionText.getText());
+					//Need to reset the date and description for the imgData array with what we changed it to
+					imgData.get(3).setDate(dateText.getText());
+					imgData.get(3).setDescription(descriptionText.getText());
+					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
+					int n = 3;
+					//Now we need to send this data to the writer to change them in the text file permanently 
+					PictureDataWriter.changeTextData(imgData, n);
 				}
 			}
 		});
