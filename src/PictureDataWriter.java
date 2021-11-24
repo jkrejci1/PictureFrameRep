@@ -22,7 +22,7 @@ public class PictureDataWriter {
 		String[] parts;
 		//The array given by the PictureFrame class contains all the data/new data for the description and date of each image frame
 		try {
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("test2.txt"))));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(fname))));
 			for (PictureData i : imgData) {
 				pw.print(i.getPicFile()+"\t");
 				pw.print(i.getDate()+"\t");
