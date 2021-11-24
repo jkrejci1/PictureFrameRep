@@ -1,5 +1,6 @@
 //Imports
 import javax.swing.JFrame;
+
 import javax.swing.JOptionPane;
 import java.awt.Container;
 import java.awt.BorderLayout;
@@ -192,7 +193,6 @@ public class PictureFrame extends JFrame {
 					panCenter.add(descriptionText, "Center");
 				} else if (panPic.getPicture().equals(theImages.get(3))) {
 					//Remove the current picture, description, and date
-
 					panPic.remove(panPic);
 					//Add the picture, description, and date of the last picture
 					//For the picture
@@ -211,8 +211,36 @@ public class PictureFrame extends JFrame {
 		//Action event for clicking save
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Add what happens when you press the next button here
-				JOptionPane.showMessageDialog(null,"You pressed save!");
+				//WE NEED TO CHANGE WHAT IS IN THE DESCRIPTION AND DATE FOR THE SELECTED PICTURE WHEN CLICKED
+				//Overwrite the descriptions.txt file to permanently change the changes made
+				if (panPic.getPicture().equals(theImages.get(0))) {
+					//Need to change the dateText and descriptionText to what is now there
+					//Below will successfully switch dateText and descriptionText for the picture
+					dateText.setText(dateText.getText());
+					descriptionText.setText(descriptionText.getText());
+					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
+					int n = 1;
+					//Now we need to send this data to the writer to change them in the text file permanently 
+					PictureDataWriter.changeTextData(dateText, descriptionText, n);
+				
+				} else if (panPic.getPicture().equals(theImages.get(1))) {
+					//Need to change the dateText and descriptionText to what is now there
+					//Below will successfully switch dateText and descriptionText for the picture
+					dateText.setText(dateText.getText());
+					descriptionText.setText(descriptionText.getText());
+					
+				} else if (panPic.getPicture().equals(theImages.get(2))) {
+					//Need to change the dateText and descriptionText to what is now there
+					//Below will successfully switch dateText and descriptionText for the picture
+					dateText.setText(dateText.getText());
+					descriptionText.setText(descriptionText.getText());
+					
+				} else if (panPic.getPicture().equals(theImages.get(3))) {
+					//Need to change the dateText and descriptionText to what is now there
+					//Below will successfully switch dateText and descriptionText for the picture
+					dateText.setText(dateText.getText());
+					descriptionText.setText(descriptionText.getText());
+				}
 			}
 		});
 	}
