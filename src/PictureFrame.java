@@ -56,7 +56,9 @@ public class PictureFrame extends JFrame {
 		//Make and insert the text area for the description of the picture
 		JTextArea descriptionText = new JTextArea(imgData.get(0).getDescription());
 		panCenter.add(descriptionText, "Center");
-		
+		//Need to set LineWrap and WrapStyleWord to true in order for full words to appear on next line when space runs out
+		descriptionText.setLineWrap(true);
+		descriptionText.setWrapStyleWord(true);
 		//Create the three buttons which will be used to save the data, click next, or click previous
 		//Create JPanel for the south that will contain the three buttons
 		JPanel southButtons = new JPanel();
@@ -87,8 +89,6 @@ public class PictureFrame extends JFrame {
 		//Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//FOR OTHER PICTURES TRY TO MAKE SOME COUNTER SYSTEM TO SELECT THE OTHER IMAGES
-				//Remove the old picture
 				
 				if (panPic.getPicture().equals(theImages.get(0))) {
 					//Remove the current picture, description, and date
@@ -143,19 +143,68 @@ public class PictureFrame extends JFrame {
 					descriptionText.setText(imgData.get(0).getDescription());
 					panCenter.add(descriptionText, "Center");
 				}
-				//The north will be used for the picture so it's dimensions match the size of the picture
-				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
-				
-				
-				
+				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one	
 			}
 		});
 		
 		//Action event for clicking the previous button
 		btnPrev.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Add what happens when you press the next button here
-				JOptionPane.showMessageDialog(null,"You pressed previous!");
+				
+				if (panPic.getPicture().equals(theImages.get(0))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					panCenter.remove(dateText);
+					panCenter.remove(descriptionText);
+					//Add the picture, description, and date of the last (The very last) picture
+					//For the picture
+					panPic.setPicture(theImages.get(3));
+					//For the date
+					dateText.setText(imgData.get(3).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(3).getDescription());
+					panCenter.add(descriptionText, "Center");
+					
+				} else if (panPic.getPicture().equals(theImages.get(1))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the last picture
+					//For the picture
+					panPic.setPicture(theImages.get(0));
+					//For the date
+					dateText.setText(imgData.get(0).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(0).getDescription());
+					panCenter.add(descriptionText, "Center");
+				} else if (panPic.getPicture().equals(theImages.get(2))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the last picture
+					//For the picture
+					panPic.setPicture(theImages.get(1));
+					//For the date
+					dateText.setText(imgData.get(1).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(1).getDescription());
+					panCenter.add(descriptionText, "Center");
+				} else if (panPic.getPicture().equals(theImages.get(3))) {
+					//Remove the current picture, description, and date
+
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the last picture
+					//For the picture
+					panPic.setPicture(theImages.get(2));
+					//For the date
+					dateText.setText(imgData.get(2).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(2).getDescription());
+					panCenter.add(descriptionText, "Center");
+				}
+				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
 			}
 		});
 		
