@@ -15,11 +15,12 @@ import java.util.ArrayList;
  */
 public class PictureDataWriter {
 	
-	public static void changeTextData(ArrayList<PictureData> imgData, int n) {
+	public static void changeTextData(ArrayList<PictureData> imgData) {
 		//Need to use this to open the text file
 		String fname = "descriptions.txt";
 		String line;
 		String[] parts;
+		int n = 0; //Keeps track of specific line we're on tied to a specific index
 		//The array given by the PictureFrame class contains all the data/new data for the description and date of each image frame
 		try {
 			Scanner fsc = new Scanner(new File(fname));
@@ -28,34 +29,17 @@ public class PictureDataWriter {
 			while (fsc.hasNextLine()) {
 				line = fsc.nextLine();
 				parts = line.split("\t");
-
+				
 				//Overwrite each line with the current data in the text file
 				
-				//For Picture 1
-				if (parts[0].equals(imgData.get(0).getPicFile())) {
-					pw.print(imgData.get(0).getPicFile()+"\t");
-					pw.print(imgData.get(0).getDate()+"\t");
-					pw.print(imgData.get(0).getDescription()+"\n");
-				
-				//For Picture 2
-				} else if (parts[0].equals(imgData.get(1).getPicFile())) {
-					pw.print(imgData.get(1).getPicFile()+"\t");
-					pw.print(imgData.get(1).getDate()+"\t");
-					pw.print(imgData.get(1).getDescription()+"\n");
-				
-				//For Picture 3
-				} else if (parts[0].equals(imgData.get(2).getPicFile())) {
-					pw.print(imgData.get(2).getPicFile()+"\t");
-					pw.print(imgData.get(2).getDate()+"\t");
-					pw.print(imgData.get(2).getDescription()+"\n");
-					
-				//For Picture 4
-				} else if (parts[0].equals(imgData.get(3).getPicFile())) {
-					pw.print(imgData.get(3).getPicFile()+"\t");
-					pw.print(imgData.get(3).getDate()+"\t");
-					pw.print(imgData.get(3).getDescription()+"\n");
+				//For ALL pictures
+				if (parts[0].equals(imgData.get(n).getPicFile())) {
+					pw.print(imgData.get(n).getPicFile()+"\t");
+					pw.print(imgData.get(n).getDate()+"\t");
+					pw.print(imgData.get(n).getDescription()+"\n");
 				}
-				
+				//Add one as the line will go to the next line meaning the next index
+				n += 1;
 			}
 			fsc.close();
 			pw.close();

@@ -23,7 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PictureFrame extends JFrame {
-	
+	private int currentIndex = 0;
 	
 	/**
 	 * This is the function that will set up the graphical user interface
@@ -31,6 +31,7 @@ public class PictureFrame extends JFrame {
 	 * @param imgData - The array list that contains all the data (file names, dates, descriptions) of each image 
 	 */
 	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
+		
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
@@ -90,120 +91,55 @@ public class PictureFrame extends JFrame {
 		//Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				
-				if (panPic.getPicture().equals(theImages.get(0))) {
+				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
+					//adds 1 to current index whenever the next button is pressed, and if it gets greater than the last index it resets the index to zero
+					currentIndex += 1;
+					if (currentIndex > 3) {
+						currentIndex = 0;
+					}
 					//Remove the current picture, description, and date
 					panPic.remove(panPic);
-					panCenter.remove(dateText);
-					panCenter.remove(descriptionText);
 					//Add the picture, description, and date of the second picture
 					//For the picture
-					panPic.setPicture(theImages.get(1));
+					panPic.setPicture(theImages.get(currentIndex));
 					//For the date
-					dateText.setText(imgData.get(1).getDate());
+					dateText.setText(imgData.get(currentIndex).getDate());
 					panCenter.add(dateText, "North");
 					//For the description
-					descriptionText.setText(imgData.get(1).getDescription());
+					descriptionText.setText(imgData.get(currentIndex).getDescription());
 					panCenter.add(descriptionText, "Center");
 					
-				} else if (panPic.getPicture().equals(theImages.get(1))) {
-					//Remove the current picture, description, and date
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the next picture
-					//For the picture
-					panPic.setPicture(theImages.get(2));
-					//For the date
-					dateText.setText(imgData.get(2).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(2).getDescription());
-					panCenter.add(descriptionText, "Center");
-				} else if (panPic.getPicture().equals(theImages.get(2))) {
-					//Remove the current picture, description, and date
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the next picture
-					//For the picture
-					panPic.setPicture(theImages.get(3));
-					//For the date
-					dateText.setText(imgData.get(3).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(3).getDescription());
-					panCenter.add(descriptionText, "Center");
-				} else if (panPic.getPicture().equals(theImages.get(3))) {
-					//Remove the current picture, description, and date
-
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the next picture
-					//For the picture
-					panPic.setPicture(theImages.get(0));
-					//For the date
-					dateText.setText(imgData.get(0).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(0).getDescription());
-					panCenter.add(descriptionText, "Center");
-				}
+				} 
 				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one	
 			}
+
 		});
 		
 		//Action event for clicking the previous button
 		btnPrev.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (panPic.getPicture().equals(theImages.get(0))) {
+				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
+					//adds 1 to current index whenever the next button is pressed, and if it gets greater than the last index it resets the index to zero
+					currentIndex -= 1;
+					if (currentIndex < 0) {
+						currentIndex = 3;
+					}
 					//Remove the current picture, description, and date
 					panPic.remove(panPic);
-					panCenter.remove(dateText);
-					panCenter.remove(descriptionText);
-					//Add the picture, description, and date of the last (The very last) picture
+					//Add the picture, description, and date of the second picture
 					//For the picture
-					panPic.setPicture(theImages.get(3));
+					panPic.setPicture(theImages.get(currentIndex));
 					//For the date
-					dateText.setText(imgData.get(3).getDate());
+					dateText.setText(imgData.get(currentIndex).getDate());
 					panCenter.add(dateText, "North");
 					//For the description
-					descriptionText.setText(imgData.get(3).getDescription());
+					descriptionText.setText(imgData.get(currentIndex).getDescription());
 					panCenter.add(descriptionText, "Center");
 					
-				} else if (panPic.getPicture().equals(theImages.get(1))) {
-					//Remove the current picture, description, and date
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the last picture
-					//For the picture
-					panPic.setPicture(theImages.get(0));
-					//For the date
-					dateText.setText(imgData.get(0).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(0).getDescription());
-					panCenter.add(descriptionText, "Center");
-				} else if (panPic.getPicture().equals(theImages.get(2))) {
-					//Remove the current picture, description, and date
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the last picture
-					//For the picture
-					panPic.setPicture(theImages.get(1));
-					//For the date
-					dateText.setText(imgData.get(1).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(1).getDescription());
-					panCenter.add(descriptionText, "Center");
-				} else if (panPic.getPicture().equals(theImages.get(3))) {
-					//Remove the current picture, description, and date
-					panPic.remove(panPic);
-					//Add the picture, description, and date of the last picture
-					//For the picture
-					panPic.setPicture(theImages.get(2));
-					//For the date
-					dateText.setText(imgData.get(2).getDate());
-					panCenter.add(dateText, "North");
-					//For the description
-					descriptionText.setText(imgData.get(2).getDescription());
-					panCenter.add(descriptionText, "Center");
-				}
+				} 
 				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
 			}
 		});
@@ -213,58 +149,17 @@ public class PictureFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//WE NEED TO CHANGE WHAT IS IN THE DESCRIPTION AND DATE FOR THE SELECTED PICTURE WHEN CLICKED
 				//Overwrite the descriptions.txt file to permanently change the changes made
-				if (panPic.getPicture().equals(theImages.get(0))) {
+				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
 					//Need to change the dateText and descriptionText to what is now there
 					//Below will successfully switch dateText and descriptionText for the picture
 					dateText.setText(dateText.getText());
 					descriptionText.setText(descriptionText.getText());
 					//Need to reset the date and description for the imgData array with what we changed it to
-					imgData.get(0).setDate(dateText.getText());
-					imgData.get(0).setDescription(descriptionText.getText());
-					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
-					int n = 0;
+					imgData.get(currentIndex).setDate(dateText.getText());
+					imgData.get(currentIndex).setDescription(descriptionText.getText());
 					//Now we need to send this data to the writer to change them in the text file permanently 
-					PictureDataWriter.changeTextData(imgData, n);
-				
-				} else if (panPic.getPicture().equals(theImages.get(1))) {
-					//Need to change the dateText and descriptionText to what is now there
-					//Below will successfully switch dateText and descriptionText for the picture
-					dateText.setText(dateText.getText());
-					descriptionText.setText(descriptionText.getText());
-					//Need to reset the date and description for the imgData array with what we changed it to
-					imgData.get(1).setDate(dateText.getText());
-					imgData.get(1).setDescription(descriptionText.getText());
-					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
-					int n = 1;
-					//Now we need to send this data to the writer to change them in the text file permanently 
-					PictureDataWriter.changeTextData(imgData, n);
-					
-				} else if (panPic.getPicture().equals(theImages.get(2))) {
-					//Need to change the dateText and descriptionText to what is now there
-					//Below will successfully switch dateText and descriptionText for the picture
-					dateText.setText(dateText.getText());
-					descriptionText.setText(descriptionText.getText());
-					//Need to reset the date and description for the imgData array with what we changed it to
-					imgData.get(2).setDate(dateText.getText());
-					imgData.get(2).setDescription(descriptionText.getText());
-					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
-					int n = 2;
-					//Now we need to send this data to the writer to change them in the text file permanently 
-					PictureDataWriter.changeTextData(imgData, n);
-					
-				} else if (panPic.getPicture().equals(theImages.get(3))) {
-					//Need to change the dateText and descriptionText to what is now there
-					//Below will successfully switch dateText and descriptionText for the picture
-					dateText.setText(dateText.getText());
-					descriptionText.setText(descriptionText.getText());
-					//Need to reset the date and description for the imgData array with what we changed it to
-					imgData.get(3).setDate(dateText.getText());
-					imgData.get(3).setDescription(descriptionText.getText());
-					//This integer is passed to the PictureDataWriter class so we know which picture data we need to change
-					int n = 3;
-					//Now we need to send this data to the writer to change them in the text file permanently 
-					PictureDataWriter.changeTextData(imgData, n);
-				}
+					PictureDataWriter.changeTextData(imgData);
+				} 
 			}
 		});
 	}
