@@ -21,6 +21,10 @@ import javax.swing.JTextField;
 public class PicturePanel extends JPanel{
 	private BufferedImage picture;
 	
+	//Get picture function
+	public BufferedImage getPicture() {
+		return picture;
+	}
 	//Set picture function
 	public void setPicture(BufferedImage picture) {
 		this.picture = picture;
@@ -43,4 +47,6 @@ public class PicturePanel extends JPanel{
 			JOptionPane.showMessageDialog(null, "Failed to load picture");
 		}
 	}
+	
+
 }

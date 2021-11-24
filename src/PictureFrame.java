@@ -30,7 +30,6 @@ public class PictureFrame extends JFrame {
 	 * @param imgData - The array list that contains all the data (file names, dates, descriptions) of each image 
 	 */
 	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
-
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
@@ -84,16 +83,70 @@ public class PictureFrame extends JFrame {
 		
 		//Now we need to create the action events for when the button is clicked, using the counter to keep tracking of nexts (addition) previous (subtraction) and saves
 		//Use functions for next, previous, and save (For save we need to change data in text file when changed, use the PictureDataWriter class)
-		
+
 		//Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//FOR OTHER PICTURES TRY TO MAKE SOME COUNTER SYSTEM TO SELECT THE OTHER IMAGES
 				//Remove the old picture
-				panPic.remove(panPic);
+				
+				if (panPic.getPicture().equals(theImages.get(0))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					panCenter.remove(dateText);
+					panCenter.remove(descriptionText);
+					//Add the picture, description, and date of the second picture
+					//For the picture
+					panPic.setPicture(theImages.get(1));
+					//For the date
+					dateText.setText(imgData.get(1).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(1).getDescription());
+					panCenter.add(descriptionText, "Center");
+					
+				} else if (panPic.getPicture().equals(theImages.get(1))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the next picture
+					//For the picture
+					panPic.setPicture(theImages.get(2));
+					//For the date
+					dateText.setText(imgData.get(2).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(2).getDescription());
+					panCenter.add(descriptionText, "Center");
+				} else if (panPic.getPicture().equals(theImages.get(2))) {
+					//Remove the current picture, description, and date
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the next picture
+					//For the picture
+					panPic.setPicture(theImages.get(3));
+					//For the date
+					dateText.setText(imgData.get(3).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(3).getDescription());
+					panCenter.add(descriptionText, "Center");
+				} else if (panPic.getPicture().equals(theImages.get(3))) {
+					//Remove the current picture, description, and date
+
+					panPic.remove(panPic);
+					//Add the picture, description, and date of the next picture
+					//For the picture
+					panPic.setPicture(theImages.get(0));
+					//For the date
+					dateText.setText(imgData.get(0).getDate());
+					panCenter.add(dateText, "North");
+					//For the description
+					descriptionText.setText(imgData.get(0).getDescription());
+					panCenter.add(descriptionText, "Center");
+				}
 				//The north will be used for the picture so it's dimensions match the size of the picture
-				panPic.setPicture(theImages.get(1));
 				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
+				
+				
 				
 			}
 		});
