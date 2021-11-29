@@ -232,6 +232,15 @@ public class PictureFrame extends JFrame {
 				}
 			}
 		});
+		
+		//Create the action event for when you click about in "Help"
+		miAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Create a pop up message with information
+				JOptionPane.showMessageDialog(null, "Created by Jack Krejci in November, 2021");
+			}
+		});
+		
 		//Have the main menu all set up
 		setJMenuBar(mbar);
 	}
