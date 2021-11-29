@@ -1,6 +1,6 @@
+
 //Imports
 import javax.swing.JFrame;
-
 
 import javax.swing.JOptionPane;
 import java.awt.Container;
@@ -29,155 +29,230 @@ import javax.swing.JMenuItem;
 
 public class PictureFrame extends JFrame {
 	private int currentIndex = 0;
-	
-	
+
+	/*	*//**
+			 * This is the function that will setup the main menu with File and Help with
+			 * their items.
+			 *//*
+				 * public void setupMainMenu() {
+				 * 
+				 * //Set up the menu with what we'd like to have items for JMenuBar mbar = new
+				 * JMenuBar(); JMenu mnuFile = new JMenu("File"); JMenu mnuHelp = new
+				 * JMenu("Help");
+				 * 
+				 * //Add the file and help items at the top in the main menu mbar.add(mnuFile);
+				 * mbar.add(mnuHelp);
+				 * 
+				 * //Set the items you want to include in "File" then add them to it JMenuItem
+				 * miSave = new JMenuItem("Save"); mnuFile.add(miSave);
+				 * 
+				 * JMenuItem miExit = new JMenuItem("Exit"); mnuFile.add(miExit);
+				 * 
+				 * //Create the action even for when you click exit miExit.addActionListener(new
+				 * ActionListener() { public void actionPerformed(ActionEvent e) {
+				 * System.exit(0); } });
+				 * 
+				 * //Create the action event for when you click save
+				 * miSave.addActionListener(new ActionListener { public void
+				 * actionPerformed(ActionEvent e) { if
+				 * (panPic.getPicture().equals(theImages.get(currentIndex))) { //Need to change
+				 * the dateText and descriptionText to what is now there //Below will
+				 * successfully switch dateText and descriptionText for the picture
+				 * dateText.setText(dateText.getText());
+				 * descriptionText.setText(descriptionText.getText()); //Need to reset the date
+				 * and description for the imgData array with what we changed it to
+				 * imgData.get(currentIndex).setDate(dateText.getText());
+				 * imgData.get(currentIndex).setDescription(descriptionText.getText()); //Now we
+				 * need to send this data to the writer to change them in the text file
+				 * permanently PictureDataWriter.changeTextData(imgData); } });
+				 * 
+				 * //Setup the final main menu setJMenuBar(mbar); }
+				 */
+
 	/**
-	 * This is the function that will setup the main menu with File and Help with their items.
+	 * This is the function that will set up the graphical user interface
+	 * 
+	 * @param theImages - The buffered image array list of all the images to be
+	 *                  used.
+	 * @param imgData   - The array list that contains all the data (file names,
+	 *                  dates, descriptions) of each image
 	 */
-	public void setupMainMenu() {
-		
-		//Set up the menu with what we'd like to have items for
+	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
+
+		setTitle("Picture Frame"); // Appears at the top bar
+		setBounds(100, 150, 290, 400); // Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
+		setDefaultCloseOperation(EXIT_ON_CLOSE); // Exit when the user hits close
+
+		// Load in the menu in the GUI
+		// Set up the menu with what we'd like to have items for
 		JMenuBar mbar = new JMenuBar();
 		JMenu mnuFile = new JMenu("File");
 		JMenu mnuHelp = new JMenu("Help");
-		
-		//Add the file and help items at the top in the main menu
+
+		// Add the file and help items at the top in the main menu
 		mbar.add(mnuFile);
 		mbar.add(mnuHelp);
-		
-		//
-	}
-	
-	
-	/**
-	 * This is the function that will set up the graphical user interface
-	 * @param theImages - The buffered image array list of all the images to be used.
-	 * @param imgData - The array list that contains all the data (file names, dates, descriptions) of each image 
-	 */
-	public void setupGUI(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
-		
-		setTitle("Picture Frame"); //Appears at the top bar
-		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
-		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
-		
-		//Load in the menu in the GUI
-		setupMainMenu();
-		
-		//Used for the border layout
+
+		// Set the items you want to include in "File" then add them to it
+		JMenuItem miSave = new JMenuItem("Save");
+		mnuFile.add(miSave);
+
+		JMenuItem miExit = new JMenuItem("Exit");
+		mnuFile.add(miExit);
+
+		// Used for the border layout
 		Container c = getContentPane();
-		c.setLayout(new BorderLayout()); //Set to a border layout
-		
-		//Have drawing Picture Panel do its work
+		c.setLayout(new BorderLayout()); // Set to a border layout
+
+		// Have drawing Picture Panel do its work
 		PicturePanel panPic = new PicturePanel();
-		//This will be for the start of what images are shown, it automatically loads the first one
-		//Original picture
-		c.add(panPic,"North");
-		//The north will be used for the picture so it's dimmensions match the size of the picture
+		// This will be for the start of what images are shown, it automatically loads
+		// the first one
+		// Original picture
+		c.add(panPic, "North");
+		// The north will be used for the picture so it's dimmensions match the size of
+		// the picture
 		panPic.setPicture(theImages.get(0));
-		//c.add(panPic.CENTER,BorderLayout.NORTH); //Question for adding a boarder layout to center		
-		
-		//Now create the center frame which contains a boarder layout as well
+		// c.add(panPic.CENTER,BorderLayout.NORTH); //Question for adding a boarder
+		// layout to center
+
+		// Now create the center frame which contains a boarder layout as well
 		JPanel panCenter = new JPanel();
 		panCenter.setLayout(new BorderLayout());
-		//Add it to the content pane
+		// Add it to the content pane
 		c.add(panCenter, "Center");
-		//Make and insert the text field for the original picture date
+		// Make and insert the text field for the original picture date
 		JTextField dateText = new JTextField(imgData.get(0).getDate());
 		panCenter.add(dateText, "North");
-		//Make and insert the text area for the description of the picture
+		// Make and insert the text area for the description of the picture
 		JTextArea descriptionText = new JTextArea(imgData.get(0).getDescription());
 		panCenter.add(descriptionText, "Center");
-		//Need to set LineWrap and WrapStyleWord to true in order for full words to appear on next line when space runs out
+		// Need to set LineWrap and WrapStyleWord to true in order for full words to
+		// appear on next line when space runs out
 		descriptionText.setLineWrap(true);
 		descriptionText.setWrapStyleWord(true);
-		//Create the three buttons which will be used to save the data, click next, or click previous
-		//Create JPanel for the south that will contain the three buttons
+		// Create the three buttons which will be used to save the data, click next, or
+		// click previous
+		// Create JPanel for the south that will contain the three buttons
 		JPanel southButtons = new JPanel();
-		//May have to use a boarder layout for the southButtons panel where we use west, center, east for the buttons
+		// May have to use a boarder layout for the southButtons panel where we use
+		// west, center, east for the buttons
 		southButtons.setLayout(new FlowLayout());
-		//Add it to the content pane
+		// Add it to the content pane
 		panCenter.add(southButtons, "South");
-		
-		//Create the three buttons to be used
-		//Previous button
-		JButton btnPrev = new JButton("Previous");
-		//Save button
-		JButton btnSave = new JButton("Save");
-		//Next button
-		JButton btnNext = new JButton("Next");
-		
-		//Now insert the buttons into the correct locations of the frame
-		//For the previous button
-		southButtons.add(btnPrev);
-		//For the save button
-		southButtons.add(btnSave);
-		//For the Next button
-		southButtons.add(btnNext);
-		
-		//Now we need to create the action events for when the button is clicked, using the counter to keep tracking of nexts (addition) previous (subtraction) and saves
-		//Use functions for next, previous, and save (For save we need to change data in text file when changed, use the PictureDataWriter class)
 
-		//Action event for clicking the next button
+		// Create the three buttons to be used
+		// Previous button
+		JButton btnPrev = new JButton("Previous");
+		// Save button
+		JButton btnSave = new JButton("Save");
+		// Next button
+		JButton btnNext = new JButton("Next");
+
+		// Now insert the buttons into the correct locations of the frame
+		// For the previous button
+		southButtons.add(btnPrev);
+		// For the save button
+		southButtons.add(btnSave);
+		// For the Next button
+		southButtons.add(btnNext);
+
+		// Now we need to create the action events for when the button is clicked, using
+		// the counter to keep tracking of nexts (addition) previous (subtraction) and
+		// saves
+		// Use functions for next, previous, and save (For save we need to change data
+		// in text file when changed, use the PictureDataWriter class)
+
+		// Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
 				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
-					//adds 1 to current index whenever the next button is pressed, and if it gets greater than the last index it resets the index to zero
+					// adds 1 to current index whenever the next button is pressed, and if it gets
+					// greater than the last index it resets the index to zero
 					currentIndex += 1;
 					if (currentIndex > 3) {
 						currentIndex = 0;
 					}
-					//Remove the current picture, description, and date
+					// Remove the current picture, description, and date
 					panPic.remove(panPic);
-					//Add the picture, description, and date of the second picture
-					//For the picture
+					// Add the picture, description, and date of the second picture
+					// For the picture
 					panPic.setPicture(theImages.get(currentIndex));
-					//For the date
+					// For the date
 					dateText.setText(imgData.get(currentIndex).getDate());
 					panCenter.add(dateText, "North");
-					//For the description
+					// For the description
 					descriptionText.setText(imgData.get(currentIndex).getDescription());
 					panCenter.add(descriptionText, "Center");
-					
-				} 
-				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one	
+
+				}
+				repaint(); // Call repaint to refresh which will cause a swap of the old picture with the
+							// new one
 			}
 
 		});
-		
-		//Action event for clicking the previous button
+
+		// Action event for clicking the previous button
 		btnPrev.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
-					//adds 1 to current index whenever the next button is pressed, and if it gets greater than the last index it resets the index to zero
+					// adds 1 to current index whenever the next button is pressed, and if it gets
+					// greater than the last index it resets the index to zero
 					currentIndex -= 1;
 					if (currentIndex < 0) {
 						currentIndex = 3;
 					}
-					//Remove the current picture, description, and date
+					// Remove the current picture, description, and date
 					panPic.remove(panPic);
-					//Add the picture, description, and date of the second picture
-					//For the picture
+					// Add the picture, description, and date of the second picture
+					// For the picture
 					panPic.setPicture(theImages.get(currentIndex));
-					//For the date
+					// For the date
 					dateText.setText(imgData.get(currentIndex).getDate());
 					panCenter.add(dateText, "North");
-					//For the description
+					// For the description
 					descriptionText.setText(imgData.get(currentIndex).getDescription());
 					panCenter.add(descriptionText, "Center");
-					
-				} 
-				repaint(); //Call repaint to refresh which will cause a swap of the old picture with the new one
+
+				}
+				repaint(); // Call repaint to refresh which will cause a swap of the old picture with the
+							// new one
+			}
+		});
+
+		// Action event for clicking save
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
+					// Need to change the dateText and descriptionText to what is now there
+					// Below will successfully switch dateText and descriptionText for the picture
+					dateText.setText(dateText.getText());
+					descriptionText.setText(descriptionText.getText());
+					// Need to reset the date and description for the imgData array with what we
+					// changed it to
+					imgData.get(currentIndex).setDate(dateText.getText());
+					imgData.get(currentIndex).setDescription(descriptionText.getText());
+					// Now we need to send this data to the writer to change them in the text file
+					// permanently
+					PictureDataWriter.changeTextData(imgData);
+				}
 			}
 		});
 		
-		//Action event for clicking save
-		btnSave.addActionListener(new ActionListener() {
+		
+		//Setup the main menu's action events
+		//Create the action even for when you click exit
+		miExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//WE NEED TO CHANGE WHAT IS IN THE DESCRIPTION AND DATE FOR THE SELECTED PICTURE WHEN CLICKED
-				//Overwrite the descriptions.txt file to permanently change the changes made
+				System.exit(0);
+			}
+		});
+		
+		//Create the action event for when you click save
+		miSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				if (panPic.getPicture().equals(theImages.get(currentIndex))) {
 					//Need to change the dateText and descriptionText to what is now there
 					//Below will successfully switch dateText and descriptionText for the picture
@@ -188,20 +263,23 @@ public class PictureFrame extends JFrame {
 					imgData.get(currentIndex).setDescription(descriptionText.getText());
 					//Now we need to send this data to the writer to change them in the text file permanently 
 					PictureDataWriter.changeTextData(imgData);
-				} 
+				}
 			}
 		});
+		//Have the main menu all set up
+		setJMenuBar(mbar);
 	}
 
 	/**
 	 * Used for setting up graphical user interface
 	 */
 	public PictureFrame() {
-		setupGUI(null,null);
+		setupGUI(null, null);
 	}
-	
+
 	/**
 	 * Sets up GUI using our information we need
+	 * 
 	 * @param theImages
 	 */
 	public PictureFrame(ArrayList<BufferedImage> theImages, ArrayList<PictureData> imgData) {
