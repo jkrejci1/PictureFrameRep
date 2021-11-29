@@ -29,45 +29,7 @@ import javax.swing.JMenuItem;
 
 public class PictureFrame extends JFrame {
 	private int currentIndex = 0;
-
-	/*	*//**
-			 * This is the function that will setup the main menu with File and Help with
-			 * their items.
-			 *//*
-				 * public void setupMainMenu() {
-				 * 
-				 * //Set up the menu with what we'd like to have items for JMenuBar mbar = new
-				 * JMenuBar(); JMenu mnuFile = new JMenu("File"); JMenu mnuHelp = new
-				 * JMenu("Help");
-				 * 
-				 * //Add the file and help items at the top in the main menu mbar.add(mnuFile);
-				 * mbar.add(mnuHelp);
-				 * 
-				 * //Set the items you want to include in "File" then add them to it JMenuItem
-				 * miSave = new JMenuItem("Save"); mnuFile.add(miSave);
-				 * 
-				 * JMenuItem miExit = new JMenuItem("Exit"); mnuFile.add(miExit);
-				 * 
-				 * //Create the action even for when you click exit miExit.addActionListener(new
-				 * ActionListener() { public void actionPerformed(ActionEvent e) {
-				 * System.exit(0); } });
-				 * 
-				 * //Create the action event for when you click save
-				 * miSave.addActionListener(new ActionListener { public void
-				 * actionPerformed(ActionEvent e) { if
-				 * (panPic.getPicture().equals(theImages.get(currentIndex))) { //Need to change
-				 * the dateText and descriptionText to what is now there //Below will
-				 * successfully switch dateText and descriptionText for the picture
-				 * dateText.setText(dateText.getText());
-				 * descriptionText.setText(descriptionText.getText()); //Need to reset the date
-				 * and description for the imgData array with what we changed it to
-				 * imgData.get(currentIndex).setDate(dateText.getText());
-				 * imgData.get(currentIndex).setDescription(descriptionText.getText()); //Now we
-				 * need to send this data to the writer to change them in the text file
-				 * permanently PictureDataWriter.changeTextData(imgData); } });
-				 * 
-				 * //Setup the final main menu setJMenuBar(mbar); }
-				 */
+	
 
 	/**
 	 * This is the function that will set up the graphical user interface
@@ -99,7 +61,11 @@ public class PictureFrame extends JFrame {
 
 		JMenuItem miExit = new JMenuItem("Exit");
 		mnuFile.add(miExit);
-
+		
+		//Set the about item which will be included in "About"
+		JMenuItem miAbout = new JMenuItem("About");
+		mnuHelp.add(miAbout);
+		
 		// Used for the border layout
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout()); // Set to a border layout
@@ -269,7 +235,9 @@ public class PictureFrame extends JFrame {
 		//Have the main menu all set up
 		setJMenuBar(mbar);
 	}
-
+	
+	//Create the action event for when you click about in the Help item
+	
 	/**
 	 * Used for setting up graphical user interface
 	 */
