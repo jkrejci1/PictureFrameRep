@@ -27,6 +27,11 @@ import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * Class that displays the picture frame to the user and handles the events that the user chooses
+ * @author Jack
+ *
+ */
 public class PictureFrame extends JFrame {
 	private int currentIndex = 0;
 	
@@ -76,11 +81,8 @@ public class PictureFrame extends JFrame {
 		// the first one
 		// Original picture
 		c.add(panPic, "North");
-		// The north will be used for the picture so it's dimmensions match the size of
-		// the picture
+		// The north will be used for the picture so it's dimensions match the size of the picture
 		panPic.setPicture(theImages.get(0));
-		// c.add(panPic.CENTER,BorderLayout.NORTH); //Question for adding a boarder
-		// layout to center
 
 		// Now create the center frame which contains a boarder layout as well
 		JPanel panCenter = new JPanel();
@@ -97,12 +99,10 @@ public class PictureFrame extends JFrame {
 		// appear on next line when space runs out
 		descriptionText.setLineWrap(true);
 		descriptionText.setWrapStyleWord(true);
-		// Create the three buttons which will be used to save the data, click next, or
-		// click previous
-		// Create JPanel for the south that will contain the three buttons
+		// Create the three buttons which will be used to save the data, click next, or click previous
+		// Then create JPanel for the south that will contain the three buttons
 		JPanel southButtons = new JPanel();
-		// May have to use a boarder layout for the southButtons panel where we use
-		// west, center, east for the buttons
+		// May have to use a boarder layout for the southButtons panel where we use west, center, east for the buttons
 		southButtons.setLayout(new FlowLayout());
 		// Add it to the content pane
 		panCenter.add(southButtons, "South");
@@ -123,12 +123,8 @@ public class PictureFrame extends JFrame {
 		// For the Next button
 		southButtons.add(btnNext);
 
-		// Now we need to create the action events for when the button is clicked, using
-		// the counter to keep tracking of nexts (addition) previous (subtraction) and
-		// saves
-		// Use functions for next, previous, and save (For save we need to change data
-		// in text file when changed, use the PictureDataWriter class)
-
+		
+		// Now we need to create the action events for when a button is clicked
 		// Action event for clicking the next button
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,8 +149,7 @@ public class PictureFrame extends JFrame {
 					panCenter.add(descriptionText, "Center");
 
 				}
-				repaint(); // Call repaint to refresh which will cause a swap of the old picture with the
-							// new one
+				repaint(); // Call repaint to refresh which will cause a swap of the old picture with the new one
 			}
 
 		});
@@ -244,9 +239,7 @@ public class PictureFrame extends JFrame {
 		//Have the main menu all set up
 		setJMenuBar(mbar);
 	}
-	
-	//Create the action event for when you click about in the Help item
-	
+		
 	/**
 	 * Used for setting up graphical user interface
 	 */

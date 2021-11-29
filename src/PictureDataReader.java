@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 
+/**
+ * The class that will take in the text file of descriptions and read in the data last saved
+ * @author Jack
+ *
+ */
 public class PictureDataReader {
 	
 	/**

@@ -6,9 +6,9 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.image.BufferedImage; //Buffered prevents flicker. It's stored in memory
+import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-import java.io.File; //For the picture
+import java.io.File; 
 import javax.swing.JOptionPane;
 
 //CAN USE CTRL-->SHIFT-->O to automatically put missing inputs
@@ -22,6 +22,11 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 
+/**
+ * Class that takes in a BufferedImage object to set picutre to. When the setPicutre changes it calls repaint to render the new image
+ * @author Jack
+ *
+ */
 public class PicturePanel extends JPanel implements MouseListener, MouseMotionListener {
 	private BufferedImage picture;
 	//Create a private data member for the x, and y coords from the mouse movement and the message with it
@@ -60,15 +65,13 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, "Failed to load picture");
 		}
-		
+		//Below will apear for the coordinates of the mouse on the picture starting at (0,0)
 		g.drawString(messageToShow, msgX, msgY);
 
 	}
 	
 	
 	//Below is for the mouse event information
-	//For the mouse listener, I need mouseClicked, mousePressed, mouseReleased, mouseEnter, mouseExited
-	//For MouseMotionListener, I need mouseMoved, and mouseDragged
 	public void mouseClicked(MouseEvent e) {
 		//For the changing of position, CHECK WHAT'S WRONG IN VIDEO
 		//Set the x and y position of where you clicked of the coordinate positions when clicked
@@ -104,6 +107,7 @@ public class PicturePanel extends JPanel implements MouseListener, MouseMotionLi
 		repaint();
 	}
 	
+	//Technically even if your currently clicked the mouse you're still moving it around the screen when those actions are done at the same time 
 	public void mouseDragged(MouseEvent e) {
 		messageToShow = String.format("(x=%d, y=%d)", e.getX(), e.getY());
 		//Now recall the pain component (forces paint component to be called)

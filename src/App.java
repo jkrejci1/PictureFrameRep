@@ -7,6 +7,11 @@ import java.awt.image.BufferedImage;
  *
  */
 public class App {
+	
+	/**
+	 * The main function for the application class
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//Declare and initialize the variable for the text file
 		String fname = "descriptions.txt";
@@ -16,11 +21,10 @@ public class App {
 		
 		//Call the PictureLoader class to create list of the buffered images
 		ArrayList<BufferedImage> theImages = PictureLoader.loadImagesFromPictureData(imgData);
-		//Used to create the frame of the app
+		
+		//Used to create the frame of the application
 		PictureFrame pf = new PictureFrame(theImages, imgData);
 		pf.setVisible(true);
 		
-		//Keep check if the imgData array has processed correctly or not
-		//System.out.println(theImages);
 	}
 }
