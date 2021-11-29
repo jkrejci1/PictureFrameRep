@@ -1,6 +1,7 @@
 //Imports
 import javax.swing.JFrame;
 
+
 import javax.swing.JOptionPane;
 import java.awt.Container;
 import java.awt.BorderLayout;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
+
 //CAN USE CTRL-->SHIFT-->O to automatically put missing inputs
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,10 +23,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class PictureFrame extends JFrame {
 	private int currentIndex = 0;
 	
+	
+	public void setupMainMenu() {
+		
+	}
 	/**
 	 * This is the function that will set up the graphical user interface
 	 * @param theImages - The buffered image array list of all the images to be used.
@@ -35,6 +43,11 @@ public class PictureFrame extends JFrame {
 		setTitle("Picture Frame"); //Appears at the top bar
 		setBounds(100,150,290,400); //Sets at (100,150) from the top left at 290 pixels wide and 400 pixels tall
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //Exit when the user hits close
+		
+		//Load in the menu in the GUI
+		setupMainMenu();
+		
+		//Used for the border layout
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout()); //Set to a border layout
 		

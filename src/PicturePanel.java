@@ -1,5 +1,6 @@
 //Imports
 import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -17,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 
 public class PicturePanel extends JPanel{
 	private BufferedImage picture;
