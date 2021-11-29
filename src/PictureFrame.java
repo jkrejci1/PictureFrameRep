@@ -20,6 +20,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -35,6 +36,16 @@ public class PictureFrame extends JFrame {
 	 */
 	public void setupMainMenu() {
 		
+		//Set up the menu with what we'd like to have items for
+		JMenuBar mbar = new JMenuBar();
+		JMenu mnuFile = new JMenu("File");
+		JMenu mnuHelp = new JMenu("Help");
+		
+		//Add the file and help items at the top in the main menu
+		mbar.add(mnuFile);
+		mbar.add(mnuHelp);
+		
+		//
 	}
 	
 	
