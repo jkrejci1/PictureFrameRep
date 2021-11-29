@@ -30,9 +30,14 @@ public class PictureFrame extends JFrame {
 	private int currentIndex = 0;
 	
 	
+	/**
+	 * This is the function that will setup the main menu with File and Help with their items.
+	 */
 	public void setupMainMenu() {
 		
 	}
+	
+	
 	/**
 	 * This is the function that will set up the graphical user interface
 	 * @param theImages - The buffered image array list of all the images to be used.
